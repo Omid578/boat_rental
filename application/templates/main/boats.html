@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+ 
+{% block head%}
+<title>Boote</title>
+{% endblock %}
+
+
+{% block body%}
+
+
+    <div class="jumbotron">
+      <center>
+        <h1>Boote</h1>
+
+      </center>
+    </div>
+ 
+
+    
+    <div style="display: flex;flex-direction: row;flex-wrap: wrap;padding:20px">
+    
+    {% for boat in boats %}
+    <div class="jumbotron" style="width: 20%;padding:20px;border-radius: 5px;margin-left:15px">
+      
+      <a href="{{ url_for('main.BookBoat',boat_id=boat.boat_id) }}"><h2>{{ boat.boat_name }}</h2></a>
+    <hr>
+
+      <p>Preis pro Tag: {{ boat.price_per_day }}</p>
+      <p>Jahr: {{ boat.year }}</p>
+      <p>Modell: {{ boat.model }}</p>
+
+    </div>
+
+
+    {% endfor %}
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Heim</title>
+{% endblock %}
+
+
+{% block body%}
+<center>
+    <div class="jumbotron">
+        <h1>Ihre gebuchten Bestellungen</h1>
+    </div>
+   
+       
+    <table class="table table-dark" style="width: 60%;">
+        <thead>
+          <tr>
+        
+         
+           
+            <th scope="col">Bootsname</th>
+            <th scope="col">Datum reservieren</th>
+            <th scope="col">Abholdatum</th>
+
+            <th scope="col">Rückflugdatum</th>
+            <th scope="col">Grund</th>
+            <th scope="col">Status</th>
+            <th scope="col">Aktionen</th>
+
+           
+          
+           
+          </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+          <tr>
+            
+          
+           
+            <td>
+              
+              <a href="{{ url_for('main.BookCar',car_id=order.car_id) }}" >{{ order.boat_name }}</a>
+              </td>
+            <td>{{ order.reserve_date }}</td>
+            <td>{{ order.pickup_date }}</td>
+         
+            <td>{{ order.return_date }}</td>
+            <td>{{ order.reason }}</td>
+        
+            <td>{{ order.status }}</td>
+         
+            <td>
+
+              <a href="{{ url_for('main.DeleteReservation',id=order.reserve_id) }}" class="btn btn-danger">Reservierung stornieren</a>
+
+              <a href="{{ url_for('main.EditReservation',id=order.reserve_id) }}" class="btn btn-primary">Bearbeiten</a>
+
+            </td>
+          
+
+          </tr>
+
+          {% endfor %}
+        
+        </tbody>
+      </table>
+</center>
+
+{% endblock %}
