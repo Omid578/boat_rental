@@ -9,12 +9,12 @@ from flask_marshmallow import Marshmallow
 app = Flask(__name__)
 ma= Marshmallow(app)
 
-# app.config['SECRET_KEY'] =  os.environ.get('SECRET_KEY')
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://')
+app.config['SECRET_KEY'] =  os.environ.get('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://')
 
 
-app.config['SECRET_KEY'] =  "asdjaddasd92839sd89asdnn8"
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:@localhost/boat_rental"
+# app.config['SECRET_KEY'] =  "asdjaddasd92839sd89asdnn8"
+# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:@localhost/boat_rental"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 Migrate(app,db)

@@ -17,7 +17,7 @@ def Index():
     if current_user.is_authenticated:
         if current_user.is_admin == 0:
             return redirect(url_for("main.Index"))
-    api = requests.get("http://localhost:5000/apis/get_all_users")    
+    api = requests.get("https://boat1-rental.herokuapp.com/apis/get_all_users")    
     data= api.text    
     parse = json.loads(data)
     return render_template('admin/index.html',users=parse["users"])
@@ -30,7 +30,7 @@ def Orders():
         if current_user.is_admin == 0:
             return redirect(url_for("main.Index"))
     
-    api = requests.get('http://localhost:5000/apis/get_all_orders')
+    api = requests.get('https://boat1-rental.herokuapp.com/apis/get_all_orders')
     data= api
     parse =json.loads(data.text)
     
@@ -96,7 +96,7 @@ def GetBoats():
         flash("Boat Added Successfully")
         return redirect(url_for('admin.GetBoats'))
 
-    api = requests.get("http://localhost:5000/apis/get_all_boats")
+    api = requests.get("https://boat1-rental.herokuapp.com/apis/get_all_boats")
     data= api.text
     parse = json.loads(data)
     print(parse)

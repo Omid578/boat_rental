@@ -21,7 +21,7 @@ def Index():
     
     
     
-    boats = requests.get('http://localhost:5000/apis/get_all_boats')
+    boats = requests.get('https://boat1-rental.herokuapp.com/apis/get_all_boats')
     data= boats.text
     parse = json.loads(data)
     
@@ -44,7 +44,7 @@ def GetYourBookedOrders():
             return redirect(url_for("admin.Index"))
     
    
-    api = requests.get("http://localhost:5000/apis/get_your_booked_orders?user_id="+str(current_user.id))
+    api = requests.get("https://boat1-rental.herokuapp.com/apis/get_your_booked_orders?user_id="+str(current_user.id))
     data = api.text
     parse = json.loads(data)
     return render_template('main/index.html',orders=parse['orders'])
